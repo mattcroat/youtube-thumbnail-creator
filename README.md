@@ -1,6 +1,6 @@
 # Thumby
 
-Thumbnail creator for YouTube using 🔗 [SvelteKit](https://kit.svelte.dev/) and 🔗 [Puppeteer](https://github.com/puppeteer/puppeteer)
+Thumbnail creator for YouTube using [SvelteKit](https://kit.svelte.dev/) and [Puppeteer](https://github.com/puppeteer/puppeteer).
 
 ## Developing
 
