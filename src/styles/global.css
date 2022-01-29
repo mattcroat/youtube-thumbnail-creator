@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: hsl(220, 20%, 14%);
+}
+
+@font-face {
+	font-family: 'Arsenica Trial Bold';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('ArsenicaTrial-Bold.ttf') format('truetype');
+}
