@@ -5,10 +5,9 @@
 </script>
 
 <div class="thumbnail">
-	<span class="order">17</span>
+	<span class="order">1</span>
 	<div class="title">
-		<span class="text">Parting</span>
-		<span class="text">Words 🥰</span>
+		<span class="text">Template</span>
 	</div>
 </div>
 

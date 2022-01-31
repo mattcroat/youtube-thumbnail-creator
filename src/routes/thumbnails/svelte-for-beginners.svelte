@@ -7,8 +7,7 @@
 <div class="thumbnail">
 	<span class="order">1</span>
 	<div class="title">
-		<span class="text">what is</span>
-		<span class="text">svelte?</span>
+		<span class="text">Template</span>
 	</div>
 </div>
 
