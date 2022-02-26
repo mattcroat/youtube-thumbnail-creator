@@ -24,7 +24,10 @@
 	}
 
 	async function takeScreenshot() {
-		await fetch('http://localhost:3000/api/screenshot')
+		await fetch('http://localhost:3000/api/screenshot', {
+			method: 'post',
+			body: JSON.stringify(order)
+		})
 	}
 
 	async function createThumbnail() {
