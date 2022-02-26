@@ -23,10 +23,8 @@
 		width: 1280px;
 		height: 720px;
 		display: grid;
-		grid-template-columns: repeat(12, 1fr);
-		grid-template-rows: repeat(12, 1fr);
+		grid-template-columns: 1fr 1fr;
 		align-items: center;
-		background-image: url('template.png');
 		background-repeat: no-repeat;
 	}
 
@@ -34,6 +32,7 @@
 		width: 68px;
 		height: 68px;
 		margin: 2rem;
+		align-self: flex-start;
 		font-family: sans-serif;
 		font-size: 2.4rem;
 		font-weight: bold;
@@ -47,10 +46,7 @@
 	}
 
 	.title {
-		grid-column: 6 / -1;
-		grid-row: 1 / -1;
 		font-family: 'Arsenica Trial Bold';
-		font-size: 8.2rem;
 		text-transform: capitalize;
 		color: hsl(0 0% 100%);
 	}
