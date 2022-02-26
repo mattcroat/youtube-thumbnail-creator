@@ -1,16 +1,17 @@
 <script lang="ts">
 	type ThumbnailType = {
-		image: string
+		backgroundImage: string
 		order: number
 		textRows: string[]
+		fontSize: string
 	}
 
 	export let thumbnail: ThumbnailType
 </script>
 
-<div class="thumbnail" style={thumbnail.image}>
+<div class="thumbnail" style={thumbnail.backgroundImage}>
 	<span class="order">{thumbnail.order}</span>
-	<div class="title">
+	<div class="title" style={thumbnail.fontSize}>
 		{#each thumbnail.textRows as text}
 			<span class="text">{text}</span>
 		{/each}

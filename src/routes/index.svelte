@@ -1,7 +1,11 @@
 <script lang="ts">
-	let image: string
+	let image = 'template.png'
 	let order = 1
 	let rows = 1
+	let size = 8
+
+	$: backgroundImage = `background-image: url('${image}')`
+	$: fontSize = `font-size: ${size}rem`
 
 	function addRow() {
 		if (rows < 3) rows += 1
@@ -19,7 +23,7 @@
 		reader.readAsDataURL(file)
 		reader.onload = (event) => {
 			const dataUrl = event.target.result as string
-			image = `background-image: url('${dataUrl}')`
+			image = dataUrl
 		}
 	}
 
@@ -35,7 +39,12 @@
 		const textRows = Array.from(textEls).map(
 			(text) => text.textContent
 		)
-		const data = { image, order, textRows }
+		const data = {
+			backgroundImage,
+			order,
+			textRows,
+			fontSize
+		}
 
 		await fetch('/thumbnail', {
 			method: 'post',
@@ -50,9 +59,9 @@
 </script>
 
 <div class="container">
-	<div class="thumbnail" style={image}>
+	<div class="thumbnail" style={backgroundImage}>
 		<span class="order">{order}</span>
-		<div class="title">
+		<div class="title" style={fontSize}>
 			{#each Array(rows) as _}
 				<span class="text" contenteditable="true">
 					Template
@@ -67,6 +76,14 @@
 			aria-label="Order"
 			min="1"
 			max="20"
+			type="number"
+		/>
+
+		<input
+			bind:value={size}
+			aria-label="Font size"
+			min="1"
+			max="8"
 			type="number"
 		/>
 
@@ -109,7 +126,6 @@
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: repeat(12, 1fr);
 		align-items: center;
-		background-image: url('template.png');
 		background-repeat: no-repeat;
 	}
 
@@ -133,7 +149,6 @@
 		grid-column: 6 / -1;
 		grid-row: 1 / -1;
 		font-family: 'Arsenica Trial Bold';
-		font-size: 8.2rem;
 		text-transform: capitalize;
 		color: hsl(0 0% 100%);
 	}
