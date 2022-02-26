@@ -12,13 +12,13 @@
 	}
 
 	function handleImage(event: Event) {
-		let target = event.target as HTMLInputElement
-		let file = target.files[0]
+		const target = event.target as HTMLInputElement
+		const file = target.files[0]
 
-		let reader = new FileReader()
+		const reader = new FileReader()
 		reader.readAsDataURL(file)
 		reader.onload = (event) => {
-			let dataUrl = event.target.result as string
+			const dataUrl = event.target.result as string
 			image = `background-image: url('${dataUrl}')`
 		}
 	}
@@ -49,55 +49,59 @@
 	}
 </script>
 
-<div class="thumbnail" style={image}>
-	<span class="order">{order}</span>
-	<div class="title">
-		{#each Array(rows) as _}
-			<span class="text" contenteditable="true">
-				Template
-			</span>
-		{/each}
+<div class="container">
+	<div class="thumbnail" style={image}>
+		<span class="order">{order}</span>
+		<div class="title">
+			{#each Array(rows) as _}
+				<span class="text" contenteditable="true">
+					Template
+				</span>
+			{/each}
+		</div>
 	</div>
+
+	<form on:submit|preventDefault={handleSubmit}>
+		<input
+			bind:value={order}
+			aria-label="Order"
+			min="1"
+			max="20"
+			type="number"
+		/>
+
+		<button on:click={addRow} type="button">
+			Add Row ⬆️
+		</button>
+
+		<button on:click={removeRow} type="button">
+			Remove Row ⬇️
+		</button>
+
+		<label class="upload" for="image">
+			Select Image 🖼️
+		</label>
+		<input
+			on:change={handleImage}
+			class="sr-only"
+			id="image"
+			name="image"
+			type="file"
+			accept="image/*"
+		/>
+		<button type="submit">Screenshot 📷️</button>
+	</form>
 </div>
 
-<form on:submit|preventDefault={handleSubmit}>
-	<input
-		bind:value={order}
-		aria-label="Order"
-		min="1"
-		max="20"
-		type="number"
-	/>
-
-	<button
-		on:click={addRow}
-		aria-label="Add row"
-		type="button"
-	>
-		+
-	</button>
-
-	<button
-		on:click={removeRow}
-		aria-label="Remove row"
-		type="button"
-	>
-		-
-	</button>
-
-	<label class="upload" for="image">Select image</label>
-	<input
-		on:change={handleImage}
-		class="sr-only"
-		id="image"
-		name="image"
-		type="file"
-		accept="image/*"
-	/>
-	<button type="submit">Screenshot 📷️</button>
-</form>
-
 <style>
+	.container {
+		display: grid;
+		place-content: center;
+		padding: 1rem 0;
+
+		position: relative;
+	}
+
 	.thumbnail {
 		width: 1280px;
 		height: 720px;
@@ -143,8 +147,8 @@
 	}
 
 	form {
-		padding: 1rem;
 		display: flex;
 		gap: 4px;
+		margin-top: 1rem;
 	}
 </style>
