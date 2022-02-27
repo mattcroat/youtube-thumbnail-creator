@@ -133,11 +133,12 @@
 	.order {
 		width: 68px;
 		height: 68px;
-		margin: 2rem;
+		margin-top: 3.5rem;
+		margin-left: 2.7rem;
 		align-self: flex-start;
-		font-family: sans-serif;
+		font-family: 'Chivo';
 		font-size: 2.4rem;
-		font-weight: bold;
+		font-weight: 700;
 		color: hsl(15 100% 49%);
 		background-color: hsl(0 0% 100%);
 		border-radius: 50%;
