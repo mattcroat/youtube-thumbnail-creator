@@ -4,16 +4,30 @@
 		order: number
 		textRows: string[]
 		fontSize: string
+		title: string
+		background: string
+		number: string
 	}
 
 	export let thumbnail: ThumbnailType
 </script>
 
 <div class="thumbnail" style={thumbnail.backgroundImage}>
-	<span class="order">{thumbnail.order}</span>
-	<div class="title" style={thumbnail.fontSize}>
+	<span class="order" style:color={thumbnail.number}>
+		{thumbnail.order}
+	</span>
+	<div
+		class="title"
+		style:color={thumbnail.title}
+		style={thumbnail.fontSize}
+	>
 		{#each thumbnail.textRows as text}
-			<span class="text">{text}</span>
+			<span
+				class="text"
+				style:background={thumbnail.background}
+			>
+				{text}
+			</span>
 		{/each}
 	</div>
 </div>
@@ -31,12 +45,12 @@
 	.order {
 		width: 68px;
 		height: 68px;
-		margin: 2rem;
+		margin-top: 3.5rem;
+		margin-left: 2.7rem;
 		align-self: flex-start;
-		font-family: sans-serif;
+		font-family: 'Chivo', sans-serif;
 		font-size: 2.4rem;
-		font-weight: bold;
-		color: hsl(15 100% 49%);
+		font-weight: 700;
 		background-color: hsl(0 0% 100%);
 		border-radius: 50%;
 
@@ -48,14 +62,12 @@
 	.title {
 		font-family: 'Arsenica Trial Bold';
 		text-transform: capitalize;
-		color: hsl(0 0% 100%);
 	}
 
 	.text {
 		display: inline-block;
 		margin: 0.6rem 0;
 		padding: 0 1.2rem;
-		background-color: hsl(0 0% 6%);
 		border-radius: 4px;
 	}
 </style>

@@ -34,7 +34,7 @@ body {
 
 button,
 input,
-.upload {
+.action {
 	padding: 1rem;
 	font-size: inherit;
 	font-weight: 700;
@@ -48,12 +48,12 @@ input,
 
 button:hover,
 input:hover,
-.upload:hover {
+.action:hover {
 	background-color: hsl(220 20% 24%);
 }
 
 button,
-.upload {
+.action {
 	cursor: pointer;
 }
 

@@ -3,6 +3,9 @@
 	let order = 1
 	let rows = 1
 	let size = 8
+	let title = 'hsl(0 0% 98%)'
+	let background = 'hsl(0 0% 6%)'
+	let number = 'hsl(15 100% 49%)'
 
 	$: backgroundImage = `background-image: url('${image}')`
 	$: fontSize = `font-size: ${size}rem`
@@ -43,7 +46,10 @@
 			backgroundImage,
 			order,
 			textRows,
-			fontSize
+			fontSize,
+			title,
+			background,
+			number
 		}
 
 		await fetch('/thumbnail', {
@@ -60,11 +66,14 @@
 
 <div class="container">
 	<div class="thumbnail" style={backgroundImage}>
-		<span class="order">{order}</span>
-		<div class="title" style={fontSize}>
+		<span class="order" style:color={number}>
+			{order}
+		</span>
+		<div class="title" style:color={title} style={fontSize}>
 			{#each Array(rows) as _}
 				<span
 					class="text"
+					style:background
 					contenteditable="true"
 					spellcheck="false"
 				>
@@ -91,6 +100,39 @@
 			type="number"
 		/>
 
+		<label class="action" for="title">
+			Text 🎨
+			<input
+				bind:value={title}
+				id="title"
+				class="sr-only"
+				name="title"
+				type="color"
+			/>
+		</label>
+
+		<label class="action" for="background">
+			Background 🎨
+			<input
+				bind:value={background}
+				id="background"
+				class="sr-only"
+				name="background"
+				type="color"
+			/>
+		</label>
+
+		<label class="action" for="number">
+			Number 🎨
+			<input
+				bind:value={number}
+				id="number"
+				class="sr-only"
+				name="number"
+				type="color"
+			/>
+		</label>
+
 		<button on:click={addRow} type="button">
 			Add Row ⬆️
 		</button>
@@ -99,17 +141,17 @@
 			Remove Row ⬇️
 		</button>
 
-		<label class="upload" for="image">
+		<label class="action" for="image">
 			Select Image 🖼️
+			<input
+				on:change={handleImage}
+				class="sr-only"
+				id="image"
+				name="image"
+				type="file"
+				accept="image/*"
+			/>
 		</label>
-		<input
-			on:change={handleImage}
-			class="sr-only"
-			id="image"
-			name="image"
-			type="file"
-			accept="image/*"
-		/>
 		<button type="submit">Screenshot 📷️</button>
 	</form>
 </div>
@@ -136,10 +178,9 @@
 		margin-top: 3.5rem;
 		margin-left: 2.7rem;
 		align-self: flex-start;
-		font-family: 'Chivo';
+		font-family: 'Chivo', sans-serif;
 		font-size: 2.4rem;
 		font-weight: 700;
-		color: hsl(15 100% 49%);
 		background-color: hsl(0 0% 100%);
 		border-radius: 50%;
 
@@ -151,14 +192,12 @@
 	.title {
 		font-family: 'Arsenica Trial Bold';
 		text-transform: capitalize;
-		color: hsl(0 0% 100%);
 	}
 
 	.text {
 		display: inline-block;
 		margin: 0.6rem 0;
 		padding: 0 1.2rem;
-		background-color: hsl(0 0% 6%);
 		border-radius: 4px;
 	}
 
