@@ -198,6 +198,7 @@
 		display: inline-block;
 		margin: 0.6rem 0;
 		padding: 0 1.2rem;
+		color: hsl(0 0% 98%);
 		border-radius: 4px;
 	}
 
