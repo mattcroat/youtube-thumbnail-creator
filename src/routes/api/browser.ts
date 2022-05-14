@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
-import { saveScreenshot } from '$lib/screenshot'
+import { openBrowser } from '$root/lib/screenshot'
 
 export const get: RequestHandler = async () => {
-  await saveScreenshot()
+  await openBrowser()
   return {}
 }
