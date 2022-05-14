@@ -1,6 +1,8 @@
-# Thumby
+# YouTube Thumbnail Creator
 
-Thumbnail creator for [Joy of Code](https://www.youtube.com/c/joyofcodedev/videos) using [SvelteKit](https://kit.svelte.dev/) and [Puppeteer](https://github.com/puppeteer/puppeteer).
+Thumbnail creator for [Joy of Code](https://www.youtube.com/c/joyofcodedev) using [SvelteKit](https://kit.svelte.dev/) and [Puppeteer](https://github.com/puppeteer/puppeteer).
+
+The thumbnail background is created using image editing software and the text is added using the thumbnail creator.
 
 ## Developing
 
